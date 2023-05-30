@@ -60,7 +60,7 @@
             const bookName = document.getElementById('book_name').value;
             const bookid = document.getElementById('book_id').value;
             const loanDate = document.getElementById('loan_date').value;
-
+            console.log(typeof book_id.value);
             if (!identificationNumber || !bookName || !loanDate || !bookid) {
                 Swal.fire({
                     icon: 'error',
@@ -69,6 +69,8 @@
                 });
                 return;
             }
+            parseInt(bookid)
+            console.log(typeof bookid);
 
             const data = {
                 identification_number: identificationNumber,
@@ -76,7 +78,7 @@
                 book_id: bookid,
                 loan_date: loanDate
             };
-
+            
             try {
                 const response = await axios.post(`${MY_SERVER}/loanbook`, data);
                 const result = response.data;

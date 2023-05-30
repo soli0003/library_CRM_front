@@ -88,46 +88,46 @@
                     }
 
                     async function returnBook(id, cust_id, book_id) {
-                        const { value: confirm } = await Swal.fire({
-                            title: 'Are you sure you want to return this book?',
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonText: 'Return',
-                            cancelButtonText: 'Cancel',
-                        });
+    const { value: confirm } = await Swal.fire({
+        title: 'Are you sure you want to return this book?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Return',
+        cancelButtonText: 'Cancel',
+    });
 
-                        if (!confirm) {
-                            return;
-                        }
+    if (!confirm) {
+        return;
+    }
 
-                        console.log("h");
-                        const return_date = new Date().toISOString().slice(0, 10);
-                        console.log(return_date);
-                        const data = {
-                            id,
-                            cust_id,
-                            book_id,
-                            return_date
-                        };
+    console.log("h");
+    const return_date = new Date().toISOString().slice(0, 10);
+    console.log(return_date);
+    const data = {
+        id,
+        cust_id,
+        book_id,
+        return_date
+    };
 
-                        try {
-                            const response = await axios.post(`${MY_SERVER}/returnbook`, data);
-                            console.log(response.data);
-                            await Swal.fire({
-                                title: 'Success!',
-                                icon: 'success',
-                                text: 'The book has been returned.',
-                            });
-                            showactiveloans(); // Refresh the loan list
-                        } catch (error) {
-                            console.error(error);
-                            await Swal.fire({
-                                title: 'Error!',
-                                icon: 'error',
-                                text: 'An error occurred while returning the book.',
-                            });
-                        }
-                    }
+    try {
+        const response = await axios.post(`${MY_SERVER}/returnbook`, data);
+        console.log(response.data);
+        await Swal.fire({
+            title: 'Success!',
+            icon: 'success',
+            text: 'The book has been returned.',
+        });
+        showactiveloans(); // Refresh the loan list
+    } catch (error) {
+        console.error(error);
+        await Swal.fire({
+            title: 'Error!',
+            icon: 'error',
+            text: 'An error occurred while returning the book.',
+        });
+    }
+}
 
                     function searchLoans() {
                         const searchInput = document.getElementById("searchInput").value.toLowerCase();
