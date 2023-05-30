@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Library CRM</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        /* Dark mode styles */
+        .dark-mode {
+            background-color: #222222;
+            color: #ffffff;
+        }
+
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {
+            height: 1400px;
+        }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            padding-top: 20px;
+            background-color: #f1f1f1;
+            height: 100%;
+        }
+
+        /* Set black background color, white text, and some padding for the footer */
+        footer {
+            background-color: #555555;
+            color: white;
+            padding: 15px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+
+            .row.content {
+                height: auto;
+            }
+
+            iframe {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        /* Styles for sticky navbar */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        /* Adjust content padding to avoid overlap with navbar */
+        .content {
+            padding-top: 0px;
+            /* Adjust this value based on your navbar height */
+        }
+
+        li {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        p {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        h2 {
+            font-weight: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse sticky-nav">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img
+                        src="https://s2.coinmarketcap.com/static/img/coins/200x200/6833.png" height="40" width="40"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Books
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a target="main" href="book_folder/bookshow.html">Book List</a></li>
+                            <li><a target="main" href="book_folder/newBook.html">Add A New Book</a></li>
+                            <li><a target="main" href="book_folder/deletedBooks.html">Deleted Book List </a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Customers
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="customer_folder/customerspage.html" target="main">Customer List</a></li>
+                            <li><a href="customer_folder/addnewcustomer.html" target="main">Add New Customer</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Loans
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="loans_folder/loans.html" target="main">Loan List</a></li>
+                            <li><a href="loans_folder/loanABook.html" target="main">New Loan Record</a></li>
+                            <li><a href="loans_folder/lateLoans.html" target="main">Late Loans</a></li>
+                            <li><a href="loans_folder/showOldLoans.html" target="main">Loan History</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">About
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a target="main" href="">Submenu 2</a></li>
+                        </ul>
+                </ul>
+                </ul>
+                </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-xs-12 col-sm-2 sidenav">
+                <p><a href="book_folder/bookshow.html" target="main">Books</a></p>
+                <p><a href="customer_folder/customerspage.html" target="main">Customers</a></p>
+                <p><a href="loans_folder/loans.html" target="main">Loans</a></p>
+            </div>
+            <div class="col-xs-12 col-sm-8 text-left">
+                <h1
+                    style="font-weight: bold; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">
+                    Soli's Library
+                </h1>
+                <iframe src="welcome.html" frameborder="0" width="100%" height="600px" name="main"></iframe>
+                <hr />
+                <h3>Unlock the Power of Reading:</h3>
+                <p><strong>Connecting Readers, Empowering Libraries: Soli's CRM, your portal to a world of
+                        books!</strong></p>
+            </div>
+            <div class="col-xs-12 col-sm-2 sidenav">
+        
+            </div>
+        </div>
+    </div>
+
+    <footer class="container-fluid text-center">
+        <p>FCKTLV</p>
+    </footer>
+</body>
+
+</html>
