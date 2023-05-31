@@ -10,11 +10,6 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-        /* Dark mode styles */
-        .dark-mode {
-            background-color: #222222;
-            color: #ffffff;
-        }
 
         /* Remove the navbar's default margin-bottom and rounded borders */
         .navbar {
@@ -24,12 +19,12 @@
 
         /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
         .row.content {
-            height: 1400px;
+            height: 800px;
         }
 
         /* Set gray background color and 100% height */
         .sidenav {
-            padding-top: 20px;
+            padding-top: 50px;
             background-color: #f1f1f1;
             height: 100%;
         }
@@ -46,6 +41,7 @@
             .sidenav {
                 height: auto;
                 padding: 15px;
+                display: none;
             }
 
             .row.content {
@@ -55,6 +51,10 @@
             iframe {
                 width: 100%;
                 height: 100%;
+            }
+
+            .lowertxt {
+                display: none;
             }
         }
 
@@ -68,7 +68,6 @@
         /* Adjust content padding to avoid overlap with navbar */
         .content {
             padding-top: 0px;
-            /* Adjust this value based on your navbar height */
         }
 
         li {
@@ -82,6 +81,8 @@
         h2 {
             font-weight: normal;
         }
+
+        
     </style>
 </head>
 
@@ -115,7 +116,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="customer_folder/customerspage.html" target="main">Customer List</a></li>
                             <li><a href="customer_folder/addnewcustomer.html" target="main">Add New Customer</a></li>
-                            <li><a href="customer_folder/deletedCustomers.html" target="main">dELETED Customers</a></li>
+                            <li><a href="customer_folder/deletedCustomers.html" target="main">Deleted Customers</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -129,12 +130,7 @@
 
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown">About
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a target="main" href="">Submenu 2</a></li>
-                        </ul>
+                    
                 </ul>
                 </ul>
                 </li>
@@ -153,19 +149,21 @@
                 <p><a href="customer_folder/customerspage.html" target="main">Customers</a></p>
                 <p><a href="loans_folder/loans.html" target="main">Loans</a></p>
             </div>
-            <div class="col-xs-12 col-sm-8 text-left">
+            <div  class="col-xs-12 col-sm-8 text-left">
                 <h1
                     style="font-weight: bold; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">
                     Soli's Library
                 </h1>
-                <iframe src="welcome.html" frameborder="0" width="100%" height="600px" name="main"></iframe>
-                <hr />
-                <h3>Unlock the Power of Reading:</h3>
-                <p><strong>Connecting Readers, Empowering Libraries: Soli's CRM, your portal to a world of
-                        books!</strong></p>
+                <iframe src="welcome.html" frameborder="0" width="100%" height="724px" name="main"></iframe>
+                <!-- <div class="lowertxt">
+                    <hr />
+                    <h3>Unlock the Power of Reading:</h3>
+                    <p><strong>Connecting Readers, Empowering Libraries: Soli's CRM, your portal to a world of
+                            books!</strong></p>
+                </div> -->
             </div>
-            <div class="col-xs-12 col-sm-2 sidenav">
-        
+            <div  class="col-xs-12 col-sm-2 sidenav">
+
             </div>
         </div>
     </div>
