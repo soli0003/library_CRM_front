@@ -45,7 +45,7 @@
         const MY_SERVER = 'https://solis-library.onrender.com';
         const getFromLocal = async () => {
             book_name.value = localStorage.getItem('bookname');
-            book_id.value = localStorage.getItem('bookname');
+            book_id.value = localStorage.getItem('bookid');
             const to_integer = localStorage.getItem('bookid');
             book_id.value = Number(to_integer);
             console.log(book_id.value);
@@ -56,59 +56,59 @@
 
 
         const createNewLoan = async () => {
-            const identificationNumber = document.getElementById('identification_number').value;
-            const bookName = document.getElementById('book_name').value;
-            const bookid = document.getElementById('book_id').value;
-            const loanDate = document.getElementById('loan_date').value;
-            console.log(typeof book_id.value);
-            if (!identificationNumber || !bookName || !loanDate || !bookid) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Please fill in all the fields.'
-                });
-                return;
-            }
-            parseInt(bookid)
-            console.log(typeof bookid);
+  const identificationNumber = document.getElementById("identification_number").value;
+  const bookName = document.getElementById("book_name").value;
+  const bookid = document.getElementById("book_id").value;
+  const loanDate = document.getElementById("loan_date").value;
+  console.log(typeof book_id.value);
+  if (!identificationNumber || !bookName || !loanDate || !bookid) {
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "Please fill in all the fields.",
+    });
+    return;
+  }
+  parseInt(bookid);
+  console.log(typeof bookid);
 
-            const data = {
-                identification_number: identificationNumber,
-                book_name: bookName,
-                book_id: bookid,
-                loan_date: loanDate
-            };
-            
-            try {
-                const response = await axios.post(`${MY_SERVER}/loanbook`, data);
-                const result = response.data;
+  const data = {
+    identification_number: identificationNumber,
+    book_name: bookName,
+    book_id: bookid,
+    loan_date: loanDate,
+  };
 
-                if (result === "Loan successful.") {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Success',
-                        text: result
-                    });
-                    // Refresh the page 3 seconds after displaying the success message
-                    setTimeout(() => {
-                        location.reload();
-                    }, 3000);
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: result
-                    });
-                }
-            } catch (error) {
-                console.error(error);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'An error occurred. Please try again.'
-                });
-            }
-        };
+  try {
+    const response = await axios.post(`${MY_SERVER}/loanbook`, data);
+    const result = response.data;
+
+    if (result === "Loan successful.") {
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: result,
+      });
+      // Close the window 3 seconds after displaying the success message
+      setTimeout(() => {
+        window.close();
+      }, 3000);
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: result,
+      });
+    }
+  } catch (error) {
+    console.error(error);
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "An error occurred. Please try again.",
+    });
+  }
+};
     </script>
 </body>
 </html>
