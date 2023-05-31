@@ -140,39 +140,43 @@
 
 
         async function deletebook(id) {
-            const confirmation = await Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!",
-            });
-            if (confirmation.isConfirmed) {
-                try {
-                    const book = bookData.find((book) => book.id === id);
-                    if (book.status === "Loaned") {
-                        Toastify({
-                            text: "Book is loaned and cannot be deleted.",
-                            duration: 3000,
-                            backgroundColor: "rgba(255, 0, 0, 0.7)",
-                        }).showToast();
-                        return;
-                    }
+  const confirmation = await Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  });
+  if (confirmation.isConfirmed) {
+    try {
+      const book = bookData.find((book) => book.id === id);
+      if (book.status === "Loaned") {
+        await Swal.fire({
+          title: "Cannot delete book!",
+          text: "Book is loaned and cannot be deleted.",
+          icon: "error",
+          timer: 3000,
+          timerProgressBar: true,
+        });
+        return;
+      }
 
-                    await axios.put(`${MY_SERVER}/removebook/${id}`);
-                    await Toastify({
-                        text: "Book deleted successfully.",
-                        duration: 3000,
-                        backgroundColor: "rgba(0, 128, 0, 0.7)",
-                    }).showToast();
-                    showBooks();
-                } catch (error) {
-                    console.error("Error deleting book:", error);
-                }
-            }
-        }
+      await axios.put(`${MY_SERVER}/removebook/${id}`);
+      await Swal.fire({
+        title: "Deleted!",
+        text: "Book deleted successfully.",
+        icon: "success",
+        timer: 3000,
+        timerProgressBar: true,
+      });
+      showBooks();
+    } catch (error) {
+      console.error("Error deleting book:", error);
+    }
+  }
+}
 
 
 
